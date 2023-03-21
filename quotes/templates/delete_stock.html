@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Company Name(Ticker)</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+
+	{% if ticker %}
+		{% for list_item in ticker %}
+			<tr>
+				<th scope="row">{{list_item}} </th>
+		      	<td> <a href ="{% url 'delete' list_item.id %}"  class="btn btn-secondary"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"> Delete Stock </a> </td>
+		    </tr>
+		{% endfor %}
+	{% else %}
+		<h2> You don't have any Stocks yet...</h2>
+
+	{% endif %}
+
+ </tbody>
+</table>
+
+{%endblock%}
